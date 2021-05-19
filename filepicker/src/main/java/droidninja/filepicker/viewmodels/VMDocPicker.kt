@@ -62,8 +62,7 @@ class VMDocPicker(application: Application) : BaseViewModel(application) {
         val documentMap = HashMap<FileType, List<Document>>()
 
         for (fileType in fileTypes) {
-            val documentListFilteredByType = documents.filter { document -> FilePickerUtils.contains(fileType.extensions, document.mimeType) }
-
+            val documentListFilteredByType = documents.filter { document -> FilePickerUtils.containsSuffixName(fileType.extensions, document.suffixName) }
             comparator?.let {
                 documentListFilteredByType.sortedWith(comparator)
             }
@@ -97,19 +96,26 @@ class VMDocPicker(application: Application) : BaseViewModel(application) {
                     document.fileType = fileType
 
                     val mimeType = data.getString(data.getColumnIndexOrThrow(MediaStore.Files.FileColumns.MIME_TYPE))
+
                     if (mimeType != null && !TextUtils.isEmpty(mimeType)) {
                         document.mimeType = mimeType
                     } else {
                         document.mimeType = ""
                     }
 
-                    document.size = data.getString(data.getColumnIndexOrThrow(MediaStore.Files.FileColumns.SIZE))
+                    //设置后缀名
+                    val suffixName = path.substring(path.lastIndexOf(".") + 1)
+                    if (suffixName.isNullOrEmpty()) {
+                        document.suffixName = ""
+                    } else {
+                        document.suffixName = suffixName
+                    }
 
+                    document.size = data.getString(data.getColumnIndexOrThrow(MediaStore.Files.FileColumns.SIZE))
                     if (!documents.contains(document)) documents.add(document)
                 }
             }
         }
-
         return documents
     }
 

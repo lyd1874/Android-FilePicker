@@ -33,6 +33,18 @@ object FilePickerUtils {
         }
         return false
     }
+
+    fun containsSuffixName(types: Array<String>, suffixName: String?): Boolean {
+        if (suffixName.isNullOrEmpty()) {
+            return false
+        }
+        for (type in types) {
+            if (suffixName.contains(type)) {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 fun ContentResolver.registerObserver(
