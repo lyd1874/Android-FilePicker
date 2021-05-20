@@ -9,6 +9,9 @@
   <color name="checkbox_color">#FB4846</color>
   <color name="checkbox_unchecked_color">#DFDFDF</color>
   <color name="search_icon_color">@android:color/white</color>
+  <color name="blue">#00B2FF</color>
+  <color name="white">#FFFFFF</color>
+  <color name="white_t90">#90FFFFFF</color>
 
   <drawable name="tab_gray">@color/bg_gray</drawable>
   <drawable name="tab_white">@android:color/white</drawable>

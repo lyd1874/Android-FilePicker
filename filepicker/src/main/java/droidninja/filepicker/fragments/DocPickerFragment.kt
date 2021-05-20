@@ -1,11 +1,13 @@
 package droidninja.filepicker.fragments
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
@@ -58,6 +60,10 @@ class DocPickerFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setViews(view)
         initView()
+        //设置选项卡文字颜色
+        tabLayout.setTabTextColors(ContextCompat.getColor(requireContext(), R.color.white_t90), ContextCompat.getColor(requireContext(), R.color.white))
+        //设在选项卡滑块颜色
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     private fun initView() {
