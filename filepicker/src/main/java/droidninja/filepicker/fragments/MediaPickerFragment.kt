@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import droidninja.filepicker.FilePickerConst
 import droidninja.filepicker.PickerManager
 import droidninja.filepicker.R
@@ -47,6 +48,10 @@ class MediaPickerFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView(view)
+        //设置选项卡文字颜色
+        tabLayout.setTabTextColors(ContextCompat.getColor(requireContext(), R.color.white_t90), ContextCompat.getColor(requireContext(), R.color.white))
+        //设在选项卡滑块颜色
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     private fun initView(view: View) {
