@@ -60,6 +60,8 @@ class DocPickerFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setViews(view)
         initView()
+        //设置tabLayout背景颜色
+        tabLayout.getChildAt(0).setBackgroundResource(R.color.blue)
         //设置选项卡文字颜色
         tabLayout.setTabTextColors(ContextCompat.getColor(requireContext(), R.color.white_t90), ContextCompat.getColor(requireContext(), R.color.white))
         //设在选项卡滑块颜色
